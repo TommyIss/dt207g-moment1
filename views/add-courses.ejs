@@ -45,26 +45,29 @@
         <!-- Kursförmulär -->
          <fieldset>
             <legend>Mata in kursinfo</legend>
-            <form action="">
-                <label for="course-code">Kurskod:</label>
-                <input type="text" id="course-code">
+            <form method="post">
+                <label for="coursecode">Kurskod:</label>
+                <input type="text" id="coursecode" name="coursecode">
                 <br>
-                <label for="course-name">Kursnamn:</label>
-                <input type="text" id="course-name">
+                <label for="coursename">Kursnamn:</label>
+                <input type="text" id="coursename" name="coursename">
                 <br>
                 <label for="progression">Progression:</label>
-                <input type="text" id="progression">
+                <input type="text" id="progression" name="progression">
                 <br>
                 <label for="link">Link till kursplan:</label>
-                <input type="text" id="link">
+                <input type="text" id="link" name="link">
                 <br>
-                <button id="add-course" type="button">Lägg till kurs</button>
-                <button id="remove-btn" type="button">Radera alla</button>
-                <button id="remove-marked" type="button">Radera markerade</button>
+                <input type="submit" id="add-course" value="Lägg till kurs">
+                <% if(error !== '') {%>
+                    <p class="error"><%= error %></p>
+                <% } %>
             </form>
         </fieldset>
         <!-- Div som visar felmeddelande -->
-        <div id="error-message"></div>
+        <div id="error-message">
+            
+        </div>
     </main>
     <footer>
       <p>Laborationsuppgift för kursen DT207G, Backend-baserad webbutveckling</p>

@@ -27,9 +27,9 @@ client.query(`
     CREATE TABLE courses(
         id SERIAL PRIMARY KEY,
         coursecode TEXT,
-        coursename TEXT,
-        syllabus TEXT, 
+        coursename TEXT, 
         progression TEXT,
+        syllabus TEXT,
         added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );    
 `);

@@ -133,8 +133,9 @@ a:hover {
   color: #FF9149;
 }
 
-#error-message {
-  display: none;
+/* Felmeddelande */
+.error {
+  color: #D84040;
 }
 
 /* Stilsättning för mindre skärm*/
