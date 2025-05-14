@@ -32,6 +32,13 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+app.get('/add-courses', (req, res) => {
+    res.render('add-courses');
+});
+
+app.get('/about', (req, res) => {
+    res.render('about');
+});
 
 // Starta servern
 app.listen(process.env.PORT, () => {

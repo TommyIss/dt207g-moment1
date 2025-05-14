@@ -1,0 +1,225 @@
+/* 
+header-footer-färg: #60B5FF
+main-färg: #FFECDB
+hover-färg: #AFDDFF
+*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+  line-height: 1.3em;
+  font-size: 1.1em;
+}
+
+/* Header */
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* Logo */
+.logo {
+    margin: 3% 0;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    white-space: nowrap;
+}
+
+/* Navigeringsmeny */
+#nav-menu {
+    display: block;
+    
+}
+.open {
+    display: none;
+}
+
+.close {
+    display: none;
+}
+
+
+.nav-list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+
+.nav-links {
+    text-decoration: none;
+    color: #EEEEEE;
+    padding: 1.4em 1em;
+    white-space: nowrap;
+}
+
+.nav-links:hover {
+    color: #D84040;
+}
+
+/* Markera aktuella sidan  */
+#actual-side {
+    color: aqua;
+    text-decoration: underline;
+}
+#actual-side:hover {
+    color: #D84040;
+}
+
+
+header, footer {
+  background-color: #60B5FF;
+  text-align: center;
+  padding: 1%;
+}
+
+/* Huvud innehållet */ 
+main {
+  background-color: #FFECDB;
+  padding: 1%;
+  min-height: 500px;
+}
+
+input {
+  margin: 1% 0;
+}
+button, #add-länk {
+  background-color: #D84040;
+  margin: 1%;
+  padding: 0.3% 1%;
+}
+button:hover, #add-länk:hover {
+  background-color: #AFDDFF;
+  cursor: pointer;
+}
+
+/*Tabell*/
+#course-table {
+  width: 100%;
+}
+tr:nth-child(even) {
+  background-color: #AFDDFF;
+}
+th {
+  background-color: #AFDDFF;
+  border: 1px solid black;
+  padding: 0 10px;
+  text-align: center;
+}
+#code-header:hover, #name-header:hover, #progress-header:hover {
+  text-decoration: underline;
+  color: #FF9149;
+  cursor: pointer;
+}
+td {
+  border: 1px solid black;
+  padding: 0 10px;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  text-decoration: underline;
+  color: #FF9149;
+}
+
+#error-message {
+  display: none;
+}
+
+/* Stilsättning för mindre skärm*/
+@media screen and (max-width: 800px) {
+    
+    /* Navigeringsmeny */
+    #nav-menu {
+        display: none;
+        width: 100%;
+    }
+    .nav-list {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: #8E1616;
+        width: 50%;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding-top: 10%;
+    }
+    .nav-list > li > a {
+        padding: 1em 0;
+    }
+
+    .menu-btn {
+        display: flex;
+        background-color: #D84040;
+        border: 1px solid #EEEEEE;
+        flex-direction: column;
+        align-items: center;
+        
+        position: absolute;
+        top: 1px;
+        right: 2%;
+    }
+    .menu-btn:hover {
+        background-color: aqua;
+        cursor: pointer;
+    }
+    .open {
+        padding: 0 0.2em;
+    }
+    menu.icon {
+        margin: 1%;
+    }
+    .bars {
+        display: block;
+        width: 20px;
+        height: 3px;
+        margin: 5px 0;
+        background-color: #EEEEEE;
+    }
+    .menu-text {
+        color: white;
+        margin: 1%;
+    }
+
+    /* Stängknapp */
+    .close {
+        padding: 0.2em;
+        z-index: 3;
+        margin: 1%;
+    }
+    .cross1 {
+        width: 25px;
+        transform: rotate(45deg);
+        position: relative;
+        top: 5px;
+    }
+    .cross2 {
+        width: 25px;
+        transform: rotate(135deg);
+        position: relative;
+        top: -3px;
+    }
+
+    #course-table {
+        overflow-x: auto;
+        font-size: 0.6em;
+        border-collapse: collapse;
+        margin: 2% 0;
+    }
+    th, td {
+        padding: 0 4px;
+    }
+}
