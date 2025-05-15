@@ -61,7 +61,7 @@
                             <td><a href="<%= course.syllabus %>"><%= course.coursecode %></a></td>
                             <td><%= course.coursename %></td>
                             <td><%= course.progression %></td>
-                            <td><a href="#">Ändra kurs</a>/ <a href="#">Radera kurs</a></td>
+                            <td><a href="#">Ändra kurs</a> / <a href="/delete/<%= course.id %>">Radera kurs</a></td>
                         </tr>
                 <% }); %>
             <% } %>

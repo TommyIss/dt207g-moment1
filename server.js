@@ -91,6 +91,21 @@ app.get('/about', async(req, res) => {
     res.render('about');
 });
 
+// Ta bort kurs från tabellen
+app.get('/delete/:id', (req, res) => {
+    let id = req.params.id;
+
+    // Radera kurs
+    client.query(`DELETE FROM courses WHERE id=$1;`, [id], (err) => {
+        if(err) {
+            console.error(err.message);
+        }
+
+        // Redirect till startsida
+        res.redirect('/');
+    });
+});
+
 // Starta servern
 app.listen(process.env.PORT, () => {
     console.log('Servern startas på port: ' + process.env.PORT);
