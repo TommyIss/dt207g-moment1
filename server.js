@@ -106,6 +106,85 @@ app.get('/delete/:id', (req, res) => {
     });
 });
 
+// Ändra kursinformation
+app.get('/edit/:id', (req, res) => {
+    let id = req.params.id;
+    
+    client.query(`SELECT * FROM courses WHERE id=$1;`, [id], (err, row) => {
+        if(err) {
+            console.error(err.message);
+        }
+
+        res.render('edit-course', {
+            course: row.rows[0],
+            error: ''
+        });
+        
+    });
+
+});
+
+app.post('/edit/:id', (req, res) => {
+    let id = req.params.id;
+    let coursecode = req.body.coursecode;
+    let coursename = req.body.coursename;
+    let progression = req.body.progression;
+    let link = req.body.link;
+
+
+     // Kontrollerar att kurskod är unik inte finns redan i tabellen och att progression är endast A, B eller C, dessutom att skicka felmeddelande beroende på felet
+    client.query('SELECT * FROM courses;', (err, courses) => {
+        if(err) {
+
+            console.log('Fel vid db-fråga ' + err);
+
+        } else if((courses.rows.every(course => course.coursecode.toLowerCase() !== coursecode.toLowerCase())) && (progression === 'A' || progression === 'B' || progression === 'C') && (coursecode !== '' || coursename !== '' || progression !== '' || link !== '')) {
+
+            client.query(`UPDATE courses SET coursecode=$1, coursename=$2, progression=$3, syllabus=$4 WHERE id=$5;`, [coursecode, coursename, progression, link, id]);
+
+            res.redirect('/');
+        } else if(coursecode === '' || coursename === '' || progression === '' || link === '') {
+            
+            let course = courses.rows.filter((currentCourse) => {currentCourse.id === id});
+            console.log(course);
+            res.render('edit-course', {
+                course: course,
+                error: 'Du måste fylla alla fält'
+            });
+            
+            
+
+        } else if((!courses.rows.every(course => course.coursecode.toLowerCase() !== coursecode.toLowerCase())) && (progression !== 'A' && progression !== 'B' && progression !== 'C')) {
+            
+            let course = courses.rows.filter((currentCourse) => {currentCourse.id === id});
+            
+            res.render('edit-course', {
+                course: course,
+                error: 'Kurskod skall vara unik, och Progression måste vara endast A, B eller C!'
+            });
+
+        }else if(!courses.rows.every(course => course.coursecode.toLowerCase() !== coursecode.toLowerCase())) {
+            
+            let course = courses.rows.filter((currentCourse) => {currentCourse.id === id});
+            
+            res.render('edit-course', {
+                course: course,
+                error: 'Kurskod skall vara unik!'
+            });
+
+        } else if(progression !== 'A' && progression !== 'B' && progression !== 'C') {
+            
+            let course = courses.rows.filter((currentCourse) => {currentCourse.id === id});
+            
+            res.render('edit-course', {
+                course: course,
+                error: 'Progression måste vara endast A, B eller C!'
+            });
+        }
+    
+    });
+});
+
 // Starta servern
 app.listen(process.env.PORT, () => {
     console.log('Servern startas på port: ' + process.env.PORT);

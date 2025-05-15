@@ -15,6 +15,7 @@
         <h1 class="logo">Moment 1</h1>
 
         <!-- Navigeringsmeny -->
+        <!-- Meny i mobilläge -->
         <button class="menu-btn open" id="open-menu">
             <span class="menu-icon">
                 <span class="bars"></span>
@@ -32,41 +33,37 @@
                 <span class="menu-text">Stäng</span>
             </button>
             <ul class="nav-list">
-                <li><a href="/" class="nav-links" id="actual-side">Startsida</a></li>
+                <li><a href="/" class="nav-links" >Startsida</a></li>
                 <li><a href="/add-courses" class="nav-links">Lägg till ny kurs</a></li>
-                <li><a href="/about" class="nav-links">Om webbplatsen</a></li>
+                <li><a href="/about" class="nav-links" >Om webbplatsen</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <h2>Startsida</h2>
-        
-        <a href="/add-courses" id="add-länk">Lägg till kurser</a>
+        <h2>Ändra befintlig kurs</h2>
 
-        <!-- Kurstabell -->
-        <table id="course-table">
-        <thead>
-            <tr>
-            <th id="code-header" data-order="desc">Kurskod</th>
-            <th id="name-header" data-order="desc">Kursnamn</th>
-            <th id="progress-header" data-order="desc">Progression</th>
-            <th>Hantera kurs</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Lägg till kurser i tabellen från databasen -->
-            <% if(locals.courses.length > 0) {%>
-                <% locals.courses.forEach((course) => { %>
-                        <tr>
-                            <td><a href="<%= course.syllabus %>" target="_blank"><%= course.coursecode %></a></td>
-                            <td><%= course.coursename %></td>
-                            <td><%= course.progression %></td>
-                            <td><a href="/edit/<%= course.id %>">Ändra kurs</a> / <a href="/delete/<%= course.id %>">Radera kurs</a></td>
-                        </tr>
-                <% }); %>
-            <% } %>
-        </tbody>
-        </table>
+        <!-- Kursförmulär -->
+         <fieldset>
+            <legend>Mata in kursinfo</legend>
+            <form method="post">
+                <label for="coursecode">Kurskod:</label>
+                <input type="text" id="coursecode" name="coursecode" value="<%= course.coursecode %>">
+                <br>
+                <label for="coursename">Kursnamn:</label>
+                <input type="text" id="coursename" name="coursename" value="<%= course.coursename %>">
+                <br>
+                <label for="progression">Progression:</label>
+                <input type="text" id="progression" name="progression" value="<%= course.progression %>">
+                <br>
+                <label for="link">Link till kursplan:</label>
+                <input type="text" id="link" name="link" value="<%= course.syllabus %>">
+                <br>
+                <input type="submit" id="add-course" value="Lägg till kurs">
+                <% if(error !== '') {%>
+                    <p class="error"><%= error %></p>
+                <% } %>
+            </form>
+        </fieldset>
     </main>
     <footer>
       <p>Laborationsuppgift för kursen DT207G, Backend-baserad webbutveckling</p>
