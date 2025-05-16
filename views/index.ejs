@@ -41,31 +41,31 @@
     <main>
         <h2>Startsida</h2>
         
-        <a href="/add-courses" id="add-länk">Lägg till kurser</a>
+        <a href="/add-courses" id="add-link">Lägg till kurser</a>
 
         <!-- Kurstabell -->
         <table id="course-table">
-        <thead>
-            <tr>
-            <th id="code-header" data-order="desc">Kurskod</th>
-            <th id="name-header" data-order="desc">Kursnamn</th>
-            <th id="progress-header" data-order="desc">Progression</th>
-            <th>Hantera kurs</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Lägg till kurser i tabellen från databasen -->
-            <% if(locals.courses.length > 0) {%>
-                <% locals.courses.forEach((course) => { %>
-                        <tr>
-                            <td><a href="<%= course.syllabus %>" target="_blank"><%= course.coursecode %></a></td>
-                            <td><%= course.coursename %></td>
-                            <td><%= course.progression %></td>
-                            <td><a href="/edit/<%= course.id %>">Ändra kurs</a> / <a href="/delete/<%= course.id %>">Radera kurs</a></td>
-                        </tr>
-                <% }); %>
-            <% } %>
-        </tbody>
+            <thead>
+                <tr>
+                <th id="code-header" data-order="desc">Kurskod</th>
+                <th id="name-header" data-order="desc">Kursnamn</th>
+                <th id="progress-header" data-order="desc">Progression</th>
+                <th>Hantera kurs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Lägg till kurser i tabellen från databasen -->
+                <% if(locals.courses.length > 0) {%>
+                    <% locals.courses.forEach((course) => { %>
+                            <tr>
+                                <td><a href="<%= course.syllabus %>" target="_blank"><%= course.coursecode %></a></td>
+                                <td><%= course.coursename %></td>
+                                <td><%= course.progression %></td>
+                                <td><a href="/edit/<%= course.id %>">Ändra kurs</a> / <a href="/delete/<%= course.id %>">Radera kurs</a></td>
+                            </tr>
+                    <% }); %>
+                <% } %>
+            </tbody>
         </table>
     </main>
     <footer>

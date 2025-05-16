@@ -1,7 +1,7 @@
 /* 
-header-footer-färg: #60B5FF
-main-färg: #FFECDB
-hover-färg: #AFDDFF
+header-footer-färg: #626F47
+main-färg: #F5ECD5
+hover-färg: #F0BB78
 */
 * {
   margin: 0;
@@ -14,6 +14,8 @@ body {
   width: 100%;
   line-height: 1.3em;
   font-size: 1.1em;
+  background-color: #F5ECD5;
+  border: 1px solid black;
 }
 
 /* Header */
@@ -25,13 +27,21 @@ header {
 }
 
 /* Logo */
+h1 {
+  margin: 3% 0;
+}
 .logo {
     margin: 3% 0;
     font-family: 'Times New Roman', Times, serif;
-    font-style: italic;
+    font-style: bold;
     white-space: nowrap;
+    color: #F5ECD5;
 }
 
+h2 {
+  margin: 3% 0;
+  text-align: center;
+}
 /* Navigeringsmeny */
 #nav-menu {
     display: block;
@@ -55,34 +65,34 @@ header {
 
 .nav-links {
     text-decoration: none;
-    color: #EEEEEE;
+    color: #F5ECD5;
     padding: 1.4em 1em;
     white-space: nowrap;
 }
 
 .nav-links:hover {
-    color: #D84040;
+    color: #F0BB78;
 }
 
 /* Markera aktuella sidan  */
 #actual-side {
-    color: aqua;
+    color: #F0BB78;
     text-decoration: underline;
 }
-#actual-side:hover {
-    color: #D84040;
-}
+
 
 
 header, footer {
-  background-color: #60B5FF;
+  background-color: #626F47;
   text-align: center;
   padding: 1%;
+  color: #F5ECD5;
 }
 
 /* Huvud innehållet */ 
 main {
-  background-color: #FFECDB;
+  max-width: 1000px;
+  margin: 0 auto;
   padding: 1%;
   min-height: 500px;
 }
@@ -90,25 +100,28 @@ main {
 input {
   margin: 1% 0;
 }
-button, #add-länk {
-  background-color: #D84040;
-  margin: 1%;
+button, #add-link, input[type="submit"] {
+  background-color: #A4B465;
+  margin: 1% 0;
   padding: 0.3% 1%;
+  border: 1px solid black;
 }
-button:hover, #add-länk:hover {
-  background-color: #AFDDFF;
+button:hover, #add-link:hover, input[type="submit"]:hover {
+  background-color: #F0BB78;
   cursor: pointer;
+  color: black;
 }
 
-/*Tabell*/
+/* Tabell */
 #course-table {
   width: 100%;
+  margin: 3% 0;
 }
 tr:nth-child(even) {
-  background-color: #AFDDFF;
+  background-color: #A4B465;
 }
 th {
-  background-color: #AFDDFF;
+  background-color: #A4B465;
   border: 1px solid black;
   padding: 0 10px;
   text-align: center;
@@ -138,6 +151,33 @@ a:hover {
   color: #D84040;
 }
 
+/* Om sida */
+section {
+  margin: 2% auto;
+  max-width: 600px;
+}
+section > ul {
+  padding: 0 3%;
+  max-width: 60ch;
+}
+
+p {
+  max-width: 60ch;
+}
+
+footer > p {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Formuläret */
+fieldset {
+  padding: 1%;
+  margin: 2% auto;
+  max-width: 600px;
+}
+
+
 /* Stilsättning för mindre skärm*/
 @media screen and (max-width: 800px) {
     
@@ -150,7 +190,7 @@ a:hover {
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
-        background-color: #8E1616;
+        background-color: #626F47;
         width: 50%;
         height: 100vh;
         position: absolute;
@@ -164,7 +204,7 @@ a:hover {
 
     .menu-btn {
         display: flex;
-        background-color: #D84040;
+        background-color: #A4B465;
         border: 1px solid #EEEEEE;
         flex-direction: column;
         align-items: center;
@@ -174,7 +214,7 @@ a:hover {
         right: 2%;
     }
     .menu-btn:hover {
-        background-color: aqua;
+        background-color: #F0BB78;
         cursor: pointer;
     }
     .open {
