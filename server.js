@@ -6,6 +6,7 @@ let app = express();
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
+let port = process.env.PORT || 3000;
 
 // Anslut till databasen
 let client = new Client({
@@ -186,6 +187,6 @@ app.post('/edit/:id', (req, res) => {
 });
 
 // Starta servern
-app.listen(process.env.PORT, () => {
-    console.log('Servern startas på port: ' + process.env.PORT);
+app.listen(port, () => {
+    console.log('Servern startas på port: ' + port);
 });
